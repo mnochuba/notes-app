@@ -34,7 +34,7 @@ namespace CCSA_Web.Controllers
             NoteService.DeleteNote(noteIds);
             return Ok("Deleted Successfully");
         }
-        [HttpGet("note")]
+        [HttpGet]
         public IActionResult FetchNote()
         {
             return Ok(NoteService.FetchNote());

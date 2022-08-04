@@ -60,10 +60,11 @@ namespace CCSANoteApp.Infrastructure
                 {
                     Content = note.Content,
                     CreatedDate = note.CreatedDate,
-                    creatorUserId = note.NoteCreator.Id,
+                    NoteCreatorUserName = note.NoteCreator.Username,
                     GroupName = note.GroupName,
                     Title = note.Title,
-                    UpdatedDate = note.UpdatedDate
+                    UpdatedDate = note.UpdatedDate,
+                    NoteId = note.Id
                 });
             }
             return result;
