@@ -9,14 +9,22 @@ namespace CCSA_Web.Controllers
     public class NotesController : ControllerBase
     {
         public INoteService NoteService { get; }
-        public NotesController(INoteService databaseService)
+        public IUserService UserService { get; }
+        public NotesController(INoteService databaseService, IUserService userService)
         {
             NoteService = databaseService;
+            UserService = userService;
         }
         [HttpPost("create-note")]
         public IActionResult CreateNote([FromBody] NoteDto note)
         {
-            NoteService.CreateNote(note.creatorUserId,note.Title, note.Content, note.GroupName);
+            var useid = UserService.GetUser(note.CreatorUserId);
+            if (useid==null)
+            {
+                return NotFound();
+            }
+            NoteService.CreateNote(note.CreatorUserId,note.Title, note.Content, note.GroupName);
+            
             return Ok("Created Successfully");
         }
 
