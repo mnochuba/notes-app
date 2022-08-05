@@ -82,10 +82,24 @@ namespace CCSANoteApp.Infrastructure
             return note;
         }
 
-        public List<Note> FetchNoteByUser(Guid creatorId)
+        public List<FetchNoteDto> FetchNoteByUser(Guid creatorId)
         {
             var notes = _noteRepository.FetchUserNotes(creatorId);
-            return notes;
+            var result = new List<FetchNoteDto>();
+            foreach (var note in notes)
+            {
+               result.Add(new FetchNoteDto
+               {
+                        Content = note.Content,
+                        CreatedDate = note.CreatedDate,
+                        NoteCreatorUserName = note.NoteCreator.Username,
+                        GroupName = note.GroupName,
+                        Title = note.Title,
+                        UpdatedDate = note.UpdatedDate,
+                        NoteId = note.Id
+               });
+            }
+           return result;         
         }
 
         public void UpdateNote(Guid id, string title, string content, GroupName group)
