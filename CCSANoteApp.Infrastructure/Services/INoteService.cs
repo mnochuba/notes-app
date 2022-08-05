@@ -13,6 +13,6 @@ namespace CCSANoteApp.Infrastructure
         List<FetchNoteDto> FetchNote();
         List<Note> FetchNoteByUser(Guid id);
         Note FetchNoteById(Guid id);
-        List<Note> FetchUserNotesByGroup(Guid userId, GroupName groupName);
+        List<FetchNoteDto> FetchUserNotesByGroup(Guid userId, GroupName groupName);
     }
 }
