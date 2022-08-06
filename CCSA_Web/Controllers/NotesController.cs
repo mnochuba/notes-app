@@ -1,4 +1,5 @@
 ﻿using CCSANoteApp.Domain;
+using CCSANoteApp.Domain.DTOs;
 using CCSANoteApp.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 
@@ -47,17 +48,23 @@ namespace CCSA_Web.Controllers
         {
             return Ok(NoteService.FetchNote());
         }
-        [HttpGet("note-group")]
-        public IActionResult FetchNoteByGroup(Guid userId, GroupName groupName)
+        [HttpGet("user-notes-group")]
+        public IActionResult FetchUserNotesByGroup(Guid userId, GroupName groupName)
         {
             return Ok(NoteService.FetchUserNotesByGroup(userId,groupName));
         }
 
-        [HttpGet("by-id/{id}")]
-        public IActionResult FetchNoteById(Guid id)
+        [HttpGet("by-id/{noteId}")]
+        public IActionResult FetchNoteById(Guid noteId)
         {
-            return Ok(NoteService.FetchNoteById(id));
+            FetchNoteDto note = NoteService.FetchNoteById(noteId);
+            if(note.NoteId == Guid.Empty)
+            {
+                return NotFound();
+            }
+            return Ok(note);
         }
+
 
         [HttpGet("by-user/{userId}")]
         public IActionResult FetchNoteByUser(Guid userId)

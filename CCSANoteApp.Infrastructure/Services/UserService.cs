@@ -1,5 +1,6 @@
 ﻿using CCSANoteApp.DB.Repositories;
 using CCSANoteApp.Domain;
+using CCSANoteApp.Domain.DTOs;
 
 namespace CCSANoteApp.Infrastructure
 {
@@ -31,43 +32,73 @@ namespace CCSANoteApp.Infrastructure
             _userRepository.DeleteById(id);
         }
 
-        public UserDto GetUser(Guid id)
+        public FetchUserDto GetUser(Guid id)
         {
-            //Refactor to add user notes
+            
             var user = _userRepository.GetById(id);
 
-            var result = new UserDto
+            var result = new FetchUserDto
             {
+                UserId = user.Id,
                 Username = user.Username,
                 Email = user.Email
             };
+            result.UserNotes = CreateNoteList(user);
             return result;
         }
 
-        public List<User> GetUsers()
+        private List<FetchNoteDto> CreateNoteList(User user)
         {
-            //Refactor
-            return _userRepository.GetAll();
+            List<FetchNoteDto> result = new();
+            foreach (var note in user.Notes)
+            {
+                result.Add(new FetchNoteDto()
+                {
+                    NoteId = note.Id,
+                    Title = note.Title,
+                    Content = note.Content,
+                    NoteCreatorUserName = note.NoteCreator.Username,
+                    GroupName = note.GroupName,
+                    CreatedDate = note.CreatedDate,
+                    UpdatedDate = note.UpdatedDate
+                });
+            }
+            return result;
+        }
+
+        public List<FetchUserDto> GetUsers()
+        {
+            
+            var users = _userRepository.GetAll();
+            List<FetchUserDto> _users = new();
+            var _user = new FetchUserDto();
+            foreach (var user in users)
+            {
+                _user = new FetchUserDto() { Email = user.Email, Username = user.Username, UserId = user.Id };
+                _user.UserNotes = CreateNoteList(user);
+                _users.Add(_user);
+            }
+            return _users;
         }
 
         public void UpdateUserEmail(Guid id, string email)
         {
-            //var user = GetUser(id);
-            //if (user != null)
-            //{
-            //    user.Email = email;
-            //    _userRepository.Update(user);
-            //}
+            var user = _userRepository.GetById(id);
+            if (user != null)
+            {
+                user.Email = email;
+                _userRepository.Update(user);
+            }
         }
 
-        public void UpdateUserName(Guid id, string name)
+        public void UpdateUserName(Guid id, string username)
         {
-            //var user = GetUser(id);
-            //if (user != null)
-            //{
-            //    user.Username = name;
-            //    _userRepository.Update(user);
-            //}
+            var user = _userRepository.GetById(id);
+            if (user != null)
+            {
+                user.Username = username;
+                _userRepository.Update(user);
+            }
         }
     }
 }
