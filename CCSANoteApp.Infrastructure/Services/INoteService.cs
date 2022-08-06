@@ -11,7 +11,7 @@ namespace CCSANoteApp.Infrastructure
         void DeleteNote(Guid id);
         void DeleteNote(List<Guid> notes);
         List<FetchNoteDto> FetchNote();
-        List<Note> FetchNoteByUser(Guid id);
+        List<FetchNoteDto> FetchNoteByUser(Guid id);
         FetchNoteDto FetchNoteById(Guid id);
         List<FetchNoteDto> FetchUserNotesByGroup(Guid userId, GroupName groupName);
     }

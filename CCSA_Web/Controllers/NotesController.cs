@@ -64,11 +64,18 @@ namespace CCSA_Web.Controllers
             }
             return Ok(note);
         }
-        
-        [HttpGet("by-user/{id}")]
-        public IActionResult FetchNoteByUser(Guid id)
+
+
+        [HttpGet("by-user/{userId}")]
+        public IActionResult FetchNoteByUser(Guid userId)
         {
-            return Ok(NoteService.FetchNoteByUser(id));
+            var user = UserService.GetUser(userId);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            var notes = NoteService.FetchNoteByUser(userId);
+            return Ok(notes);
         }
 
         [HttpPut("title")]
