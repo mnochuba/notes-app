@@ -20,6 +20,21 @@ builder.Services.AddScoped<UserRepository>();
 builder.Services.AddScoped<NoteRepository>();
 builder.Services.AddSingleton<SessionFactory>();
 
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("MustBeAuthenticated", policy =>
+    {
+        policy.RequireAuthenticatedUser();
+    });
+
+    options.AddPolicy("MustBeAStaff", policy =>
+    {
+        policy.RequireRole("Staff", "Manager");
+        policy.RequireClaim("MustBeAbove18");
+    });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -30,6 +45,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

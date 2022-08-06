@@ -5671,11 +5671,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Users\\Murphy\\Documents\\Backup\\Documents\\Software Academy\\CCSA_Web\\CCSA_Web\\CCSA_Web.csproj",
+      "projectUniqueName": "E:\\Users\\Murphy\\Documents\\Backup\\Documents\\Software Academy\\CCSA_Web - Copy\\CCSA_Web\\CCSA_Web.csproj",
       "projectName": "CCSA_Web",
-      "projectPath": "E:\\Users\\Murphy\\Documents\\Backup\\Documents\\Software Academy\\CCSA_Web\\CCSA_Web\\CCSA_Web.csproj",
+      "projectPath": "E:\\Users\\Murphy\\Documents\\Backup\\Documents\\Software Academy\\CCSA_Web - Copy\\CCSA_Web\\CCSA_Web.csproj",
       "packagesPath": "C:\\Users\\MURPHY NNAMDI\\.nuget\\packages\\",
-      "outputPath": "E:\\Users\\Murphy\\Documents\\Backup\\Documents\\Software Academy\\CCSA_Web\\CCSA_Web\\obj\\",
+      "outputPath": "E:\\Users\\Murphy\\Documents\\Backup\\Documents\\Software Academy\\CCSA_Web - Copy\\CCSA_Web\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\MURPHY NNAMDI\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -5692,11 +5692,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "E:\\Users\\Murphy\\Documents\\Backup\\Documents\\Software Academy\\CCSA_Web\\CCSANoteApp.DB\\CCSANoteApp.DB.csproj": {
-              "projectPath": "E:\\Users\\Murphy\\Documents\\Backup\\Documents\\Software Academy\\CCSA_Web\\CCSANoteApp.DB\\CCSANoteApp.DB.csproj"
+            "E:\\Users\\Murphy\\Documents\\Backup\\Documents\\Software Academy\\CCSA_Web - Copy\\CCSANoteApp.DB\\CCSANoteApp.DB.csproj": {
+              "projectPath": "E:\\Users\\Murphy\\Documents\\Backup\\Documents\\Software Academy\\CCSA_Web - Copy\\CCSANoteApp.DB\\CCSANoteApp.DB.csproj"
             },
-            "E:\\Users\\Murphy\\Documents\\Backup\\Documents\\Software Academy\\CCSA_Web\\CCSANoteApp.Infrastructure\\CCSANoteApp.Infrastructure.csproj": {
-              "projectPath": "E:\\Users\\Murphy\\Documents\\Backup\\Documents\\Software Academy\\CCSA_Web\\CCSANoteApp.Infrastructure\\CCSANoteApp.Infrastructure.csproj"
+            "E:\\Users\\Murphy\\Documents\\Backup\\Documents\\Software Academy\\CCSA_Web - Copy\\CCSANoteApp.Infrastructure\\CCSANoteApp.Infrastructure.csproj": {
+              "projectPath": "E:\\Users\\Murphy\\Documents\\Backup\\Documents\\Software Academy\\CCSA_Web - Copy\\CCSANoteApp.Infrastructure\\CCSANoteApp.Infrastructure.csproj"
             }
           }
         }

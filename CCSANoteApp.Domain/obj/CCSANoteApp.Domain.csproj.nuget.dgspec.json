@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Users\\Murphy\\Documents\\Backup\\Documents\\Software Academy\\CCSA_Web\\CCSANoteApp.Domain\\CCSANoteApp.Domain.csproj": {}
+    "E:\\Users\\Murphy\\Documents\\Backup\\Documents\\Software Academy\\CCSA_Web - Copy\\CCSANoteApp.Domain\\CCSANoteApp.Domain.csproj": {}
   },
   "projects": {
-    "E:\\Users\\Murphy\\Documents\\Backup\\Documents\\Software Academy\\CCSA_Web\\CCSANoteApp.Domain\\CCSANoteApp.Domain.csproj": {
+    "E:\\Users\\Murphy\\Documents\\Backup\\Documents\\Software Academy\\CCSA_Web - Copy\\CCSANoteApp.Domain\\CCSANoteApp.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Users\\Murphy\\Documents\\Backup\\Documents\\Software Academy\\CCSA_Web\\CCSANoteApp.Domain\\CCSANoteApp.Domain.csproj",
+        "projectUniqueName": "E:\\Users\\Murphy\\Documents\\Backup\\Documents\\Software Academy\\CCSA_Web - Copy\\CCSANoteApp.Domain\\CCSANoteApp.Domain.csproj",
         "projectName": "CCSANoteApp.Domain",
-        "projectPath": "E:\\Users\\Murphy\\Documents\\Backup\\Documents\\Software Academy\\CCSA_Web\\CCSANoteApp.Domain\\CCSANoteApp.Domain.csproj",
+        "projectPath": "E:\\Users\\Murphy\\Documents\\Backup\\Documents\\Software Academy\\CCSA_Web - Copy\\CCSANoteApp.Domain\\CCSANoteApp.Domain.csproj",
         "packagesPath": "C:\\Users\\MURPHY NNAMDI\\.nuget\\packages\\",
-        "outputPath": "E:\\Users\\Murphy\\Documents\\Backup\\Documents\\Software Academy\\CCSA_Web\\CCSANoteApp.Domain\\obj\\",
+        "outputPath": "E:\\Users\\Murphy\\Documents\\Backup\\Documents\\Software Academy\\CCSA_Web - Copy\\CCSANoteApp.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\MURPHY NNAMDI\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "6PtsOJKJXsNqZbgWo1KJkCQp9VpNismZCc2yDjI+X18i3AVDdoX1DukFidJFT/wZcdiGS0KpMUTV+daLbcdVrg==",
+  "dgSpecHash": "aqg42A8W9rhlaDYzDhSQAQY/kz2oXeRRHDbflr1B84E+x8W0oMWAA46IikX9T4XSA9WMctWZ4xFKFcApcVYirA==",
   "success": true,
-  "projectFilePath": "E:\\Users\\Murphy\\Documents\\Backup\\Documents\\Software Academy\\CCSA_Web\\CCSANoteApp.DB\\CCSANoteApp.DB.csproj",
+  "projectFilePath": "E:\\Users\\Murphy\\Documents\\Backup\\Documents\\Software Academy\\CCSA_Web - Copy\\CCSANoteApp.DB\\CCSANoteApp.DB.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\MURPHY NNAMDI\\.nuget\\packages\\antlr3.runtime\\3.5.1\\antlr3.runtime.3.5.1.nupkg.sha512",
     "C:\\Users\\MURPHY NNAMDI\\.nuget\\packages\\fluentnhibernate\\3.1.0\\fluentnhibernate.3.1.0.nupkg.sha512",

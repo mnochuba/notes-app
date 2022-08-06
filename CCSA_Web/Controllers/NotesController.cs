@@ -1,9 +1,11 @@
 ﻿using CCSANoteApp.Domain;
 using CCSANoteApp.Infrastructure;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CCSA_Web.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class NotesController : ControllerBase
@@ -13,6 +15,8 @@ namespace CCSA_Web.Controllers
         {
             NoteService = databaseService;
         }
+
+        [AllowAnonymous]
         [HttpPost("create-note")]
         public IActionResult CreateNote([FromBody] NoteDto note)
         {
