@@ -90,10 +90,24 @@ namespace CCSANoteApp.Infrastructure
             return result;
         }
 
-        public Note FetchNoteById(Guid id)
+        public FetchNoteDto FetchNoteById(Guid id)
         {
             var note = _noteRepository.GetById(id);
-            return note;
+            if (note is not null)
+            {
+                var result = new FetchNoteDto
+                {
+                    Content = note.Content,
+                    CreatedDate = note.CreatedDate,
+                    NoteCreatorUserName = note.NoteCreator.Username,
+                    GroupName = note.GroupName,
+                    Title = note.Title,
+                    UpdatedDate = note.UpdatedDate,
+                    NoteId = note.Id
+                };
+                return result;
+            }
+            return new FetchNoteDto();
         }
 
         public List<Note> FetchNoteByUser(Guid creatorId)
