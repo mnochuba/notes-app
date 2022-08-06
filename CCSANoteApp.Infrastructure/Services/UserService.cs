@@ -34,11 +34,12 @@ namespace CCSANoteApp.Infrastructure
 
         public FetchUserDto GetUser(Guid id)
         {
-            //Refactor to add user notes
+            
             var user = _userRepository.GetById(id);
 
             var result = new FetchUserDto
             {
+                UserId = user.Id,
                 Username = user.Username,
                 Email = user.Email
             };
@@ -53,8 +54,10 @@ namespace CCSANoteApp.Infrastructure
             {
                 result.Add(new FetchNoteDto()
                 {
+                    NoteId = note.Id,
                     Title = note.Title,
                     Content = note.Content,
+                    NoteCreatorUserName = note.NoteCreator.Username,
                     GroupName = note.GroupName,
                     CreatedDate = note.CreatedDate,
                     UpdatedDate = note.UpdatedDate
@@ -65,7 +68,7 @@ namespace CCSANoteApp.Infrastructure
 
         public List<FetchUserDto> GetUsers()
         {
-            //Refactor
+            
             var users = _userRepository.GetAll();
             List<FetchUserDto> _users = new();
             var _user = new FetchUserDto();
@@ -80,22 +83,22 @@ namespace CCSANoteApp.Infrastructure
 
         public void UpdateUserEmail(Guid id, string email)
         {
-            //var user = GetUser(id);
-            //if (user != null)
-            //{
-            //    user.Email = email;
-            //    _userRepository.Update(user);
-            //}
+            var user = _userRepository.GetById(id);
+            if (user != null)
+            {
+                user.Email = email;
+                _userRepository.Update(user);
+            }
         }
 
-        public void UpdateUserName(Guid id, string name)
+        public void UpdateUserName(Guid id, string username)
         {
-            //var user = GetUser(id);
-            //if (user != null)
-            //{
-            //    user.Username = name;
-            //    _userRepository.Update(user);
-            //}
+            var user = _userRepository.GetById(id);
+            if (user != null)
+            {
+                user.Username = username;
+                _userRepository.Update(user);
+            }
         }
     }
 }
