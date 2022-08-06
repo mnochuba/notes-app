@@ -60,31 +60,74 @@ namespace CCSANoteApp.Infrastructure
                 {
                     Content = note.Content,
                     CreatedDate = note.CreatedDate,
-                    creatorUserId = note.NoteCreator.Id,
+                    NoteCreatorUserName = note.NoteCreator.Username,
                     GroupName = note.GroupName,
                     Title = note.Title,
-                    UpdatedDate = note.UpdatedDate
+                    UpdatedDate = note.UpdatedDate,
+                    NoteId = note.Id
                 });
             }
             return result;
         }
 
-        public List<Note> FetchUserNotesByGroup(Guid userId, GroupName groupName)
+        public List<FetchNoteDto> FetchUserNotesByGroup(Guid userId, GroupName groupName)
         {
             var _notes = _noteRepository.FetchUserNotesByGroup(userId, groupName);
-            return _notes;
+            var result = new List<FetchNoteDto>();
+            foreach (var note in _notes)
+            {
+                result.Add(new FetchNoteDto
+                {
+                    Content = note.Content,
+                    CreatedDate = note.CreatedDate,
+                    NoteCreatorUserName = note.NoteCreator.Username,
+                    GroupName = note.GroupName,
+                    Title = note.Title,
+                    UpdatedDate = note.UpdatedDate,
+                    NoteId = note.Id
+                });
+            }
+            return result;
         }
 
-        public Note FetchNoteById(Guid id)
+        public FetchNoteDto FetchNoteById(Guid id)
         {
             var note = _noteRepository.GetById(id);
-            return note;
+            if (note is not null)
+            {
+                var result = new FetchNoteDto
+                {
+                    Content = note.Content,
+                    CreatedDate = note.CreatedDate,
+                    NoteCreatorUserName = note.NoteCreator.Username,
+                    GroupName = note.GroupName,
+                    Title = note.Title,
+                    UpdatedDate = note.UpdatedDate,
+                    NoteId = note.Id
+                };
+                return result;
+            }
+            return new FetchNoteDto();
         }
 
-        public List<Note> FetchNoteByUser(Guid creatorId)
+        public List<FetchNoteDto> FetchNoteByUser(Guid creatorId)
         {
             var notes = _noteRepository.FetchUserNotes(creatorId);
-            return notes;
+            var result = new List<FetchNoteDto>();
+            foreach (var note in notes)
+            {
+               result.Add(new FetchNoteDto
+               {
+                        Content = note.Content,
+                        CreatedDate = note.CreatedDate,
+                        NoteCreatorUserName = note.NoteCreator.Username,
+                        GroupName = note.GroupName,
+                        Title = note.Title,
+                        UpdatedDate = note.UpdatedDate,
+                        NoteId = note.Id
+               });
+            }
+           return result;         
         }
 
         public void UpdateNote(Guid id, string title, string content, GroupName group)

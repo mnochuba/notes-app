@@ -1,4 +1,5 @@
 ﻿using CCSANoteApp.Domain;
+using CCSANoteApp.Domain.DTOs;
 using CCSANoteApp.Infrastructure;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -11,16 +12,24 @@ namespace CCSA_Web.Controllers
     public class NotesController : ControllerBase
     {
         public INoteService NoteService { get; }
-        public NotesController(INoteService databaseService)
+        public IUserService UserService { get; }
+        public NotesController(INoteService databaseService, IUserService userService)
         {
             NoteService = databaseService;
+            UserService = userService;
         }
 
         [AllowAnonymous]
         [HttpPost("create-note")]
         public IActionResult CreateNote([FromBody] NoteDto note)
         {
-            NoteService.CreateNote(note.creatorUserId,note.Title, note.Content, note.GroupName);
+            var useid = UserService.GetUser(note.CreatorUserId);
+            if (useid==null)
+            {
+                return NotFound();
+            }
+            NoteService.CreateNote(note.CreatorUserId,note.Title, note.Content, note.GroupName);
+            
             return Ok("Created Successfully");
         }
 
@@ -38,27 +47,39 @@ namespace CCSA_Web.Controllers
             NoteService.DeleteNote(noteIds);
             return Ok("Deleted Successfully");
         }
-        [HttpGet("note")]
+        [HttpGet]
         public IActionResult FetchNote()
         {
             return Ok(NoteService.FetchNote());
         }
-        [HttpGet("note-group")]
-        public IActionResult FetchNoteByGroup(Guid userId, GroupName groupName)
+        [HttpGet("user-notes-group")]
+        public IActionResult FetchUserNotesByGroup(Guid userId, GroupName groupName)
         {
             return Ok(NoteService.FetchUserNotesByGroup(userId,groupName));
         }
 
-        [HttpGet("by-id/{id}")]
-        public IActionResult FetchNoteById(Guid id)
+        [HttpGet("by-id/{noteId}")]
+        public IActionResult FetchNoteById(Guid noteId)
         {
-            return Ok(NoteService.FetchNoteById(id));
+            FetchNoteDto note = NoteService.FetchNoteById(noteId);
+            if(note.NoteId == Guid.Empty)
+            {
+                return NotFound();
+            }
+            return Ok(note);
         }
 
-        [HttpGet("by-user/{id}")]
-        public IActionResult FetchNoteByUser(Guid id)
+
+        [HttpGet("by-user/{userId}")]
+        public IActionResult FetchNoteByUser(Guid userId)
         {
-            return Ok(NoteService.FetchNoteByUser(id));
+            var user = UserService.GetUser(userId);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            var notes = NoteService.FetchNoteByUser(userId);
+            return Ok(notes);
         }
 
         [HttpPut("title")]

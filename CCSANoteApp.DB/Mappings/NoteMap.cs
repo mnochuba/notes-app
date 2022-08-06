@@ -19,7 +19,7 @@ namespace CCSANoteApp.DB.Mappings
             Map(note=>note.CreatedDate);
             Map(note=>note.UpdatedDate);
             Map(note=>note.GroupName);
-            References(note=>note.NoteCreator);
+            References(note=>note.NoteCreator).Not.Nullable();
         }
     }
 }
