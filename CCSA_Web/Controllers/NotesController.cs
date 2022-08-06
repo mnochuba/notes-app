@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CCSA_Web.Controllers
 {
-    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class NotesController : ControllerBase
@@ -19,7 +18,6 @@ namespace CCSA_Web.Controllers
             UserService = userService;
         }
 
-        [AllowAnonymous]
         [HttpPost("create-note")]
         public IActionResult CreateNote([FromBody] NoteDto note)
         {
