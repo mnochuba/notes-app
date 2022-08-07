@@ -46,13 +46,6 @@ namespace CCSA_Web.Controllers
                 return BadRequest(ex.Message);
             }
 
-            //var user = UserService.GetUser(userId);
-            //if (user != null)
-            //{
-            //    return Ok(user);
-            //}
-            //return NotFound("User not found");
-
         }
 
         [HttpGet]
