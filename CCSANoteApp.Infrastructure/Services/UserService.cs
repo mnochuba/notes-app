@@ -6,12 +6,13 @@ namespace CCSANoteApp.Infrastructure
 {
     public class UserService : IUserService
     {
-        private readonly UserRepository _userRepository;
         public UserService(UserRepository userRepository)
         {
             _userRepository = userRepository;
         }
 
+        
+        private readonly UserRepository _userRepository;
         public void CreateUser(string username, string email, string password)
         {
             _userRepository.Add(new User
@@ -32,10 +33,14 @@ namespace CCSANoteApp.Infrastructure
             _userRepository.DeleteById(id);
         }
 
-        public FetchUserDto GetUser(Guid id)
+        public FetchUserDto GetUser(Guid userId)
         {
             
-            var user = _userRepository.GetById(id);
+            var user = _userRepository.GetById(userId);
+            if (user == null)
+            {
+                throw new ArgumentException("User not found", userId.ToString());
+            }
 
             var result = new FetchUserDto
             {
