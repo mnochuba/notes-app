@@ -32,10 +32,27 @@ namespace CCSA_Web.Controllers
             UserService.DeleteUser(id);
             return Ok("User Deleted Successfully");
         }
-        [HttpGet("user/{id}")]
-        public IActionResult GetUser(Guid id)
+        [HttpGet("user/{userId}")]
+        public IActionResult GetUser(Guid userId)
         {
-            return Ok(UserService.GetUser(id));
+            
+            try
+            {
+                var user = UserService.GetUser(userId);
+                return Ok(user);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+            //var user = UserService.GetUser(userId);
+            //if (user != null)
+            //{
+            //    return Ok(user);
+            //}
+            //return NotFound("User not found");
+
         }
 
         [HttpGet]
