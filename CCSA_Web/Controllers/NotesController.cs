@@ -56,6 +56,12 @@ namespace CCSA_Web.Controllers
             return Ok(NoteService.FetchUserNotesByGroup(userId,groupName));
         }
 
+        [HttpGet("notes-bygroup")]
+        public IActionResult FetchNotesByGroup(GroupName groupName)
+        {
+            return Ok(NoteService.FetchNotesByGroup(groupName));
+        }
+
         [HttpGet("by-id/{noteId}")]
         public IActionResult FetchNoteById(Guid noteId)
         {
