@@ -19,5 +19,11 @@ namespace CCSANoteApp.DB.Repositories
             var notes = _session.Query<Note>().Where(x => x.NoteCreator.Id == userId);
             return notes.ToList();
         }
+
+        public List<Note> FetchNotesByGroup(GroupName groupName)
+        {
+            var notes = _session.Query<Note>().Where(x => x.GroupName == groupName);
+            return notes.ToList();
+        }
     }
 }
