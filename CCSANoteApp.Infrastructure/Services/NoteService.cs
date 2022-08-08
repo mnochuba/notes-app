@@ -152,5 +152,24 @@ namespace CCSANoteApp.Infrastructure
             }
         }
 
+        public List<FetchNoteDto> FetchNotesByGroup(GroupName groupName)
+        {
+            var _notes = _noteRepository.FetchNotesByGroup(groupName);
+            var result = new List<FetchNoteDto>();
+            foreach (var note in _notes)
+            {
+                result.Add(new FetchNoteDto
+                {
+                    Content = note.Content,
+                    CreatedDate = note.CreatedDate,
+                    NoteCreatorUserName = note.NoteCreator.Username,
+                    GroupName = note.GroupName,
+                    Title = note.Title,
+                    UpdatedDate = note.UpdatedDate,
+                    NoteId = note.Id
+                });
+            }
+            return result;
+        }
     }
 }
